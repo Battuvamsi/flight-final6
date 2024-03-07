@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+     <link rel="website icon" type=
+    "png" href="https://th.bing.com/th/id/OIP.XNl__t4pbd-z1mdVzyXvQAHaGl?w=179&h=180&c=7&r=0&o=5&pid=1.7">
+    
+    
+    <style>
+    
+    .register-link {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #14f2ea;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .register-link:hover {
+            color: #14f2ea;
+        }
+    
+    
+    
+    body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://cdn.pixabay.com/photo/2014/11/27/00/58/aircraft-547105_1280.jpg');
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Centers the image */
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+        .login-container {
+            background-color: rgba(238 234 227 / 44%);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 260px;
+            text-align: center;
+            animation: fadeIn 0.5s;
+        }
+
+        h1 {
+            color: #d16530;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            text-align: left;
+            color: black;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 90%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+            color: #d16530;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #4285F4;
+        }
+
+        input[type="submit"] {
+            width: 60%;
+            padding: 8px;
+            background-color: #d16530;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #d16530;
+        }
+
+        input[type="submit"]:active {
+            animation: buttonClick 0.3s;
+        }
+
+        @keyframes buttonClick {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(0.95);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Additional Animations */
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"] {
+            animation: fadeInDown 0.5s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Background Animation */
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form th:action="@{/login}" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+            
+            
+            <input type="submit" value="Login">
+
+            <a href="/v2/register"  class="register-link">-Register</a>
+        </form>
+         <a th:href="@{/forgot-password}" class="register-link">Forgot Password?</a>
+         
+
+    </div>
+</body>
+</html>
+
+
